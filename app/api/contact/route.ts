@@ -41,24 +41,22 @@ export async function POST(req: Request) {
 
     // ---- SMTP Transport (Hostinger) ----
     const transporter = nodemailer.createTransport({
-  host: "smtp.hostinger.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: "connect@safarjunction.com",
-    pass: process.env.EMAIL_PASSWORD!,
-  },
-})
-
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: "connect@safarjunction.com",
+        pass: process.env.EMAIL_PASSWORD!,
+      },
+    })
 
     // ---- Admin Email ----
     const adminHtml = `
 <!DOCTYPE html>
 <html>
-<body style="font-family: Arial, sans-serif; background:#f8f8f8; padding:24px;">
-  <div style="max-width:600px; background:#ffffff; border-radius:12px; padding:24px;">
+<body style="font-family:Arial,sans-serif;background:#f8f8f8;padding:24px;">
+  <div style="max-width:600px;background:#ffffff;border-radius:12px;padding:24px;">
     <h2>New Journey Inquiry</h2>
-
     <p><strong>Name:</strong> ${name}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone:</strong> ${phone || "—"}</p>
@@ -78,27 +76,70 @@ export async function POST(req: Request) {
 </html>
 `
 
-    // ---- User Auto Reply ----
+    // ---- User Auto Reply (LEFT LOGO + RIGHT BRAND) ----
     const userHtml = `
 <!DOCTYPE html>
 <html>
-<body style="margin:0; padding:0; background:#f8f8f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<body style="margin:0;padding:0;background:#f8f8f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
     <tr>
       <td align="center">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px; background:#ffffff; border-radius:16px; padding:32px;">
-          <tr>
-            <td style="font-size:24px; font-weight:600;">SafarJunction</td>
-          </tr>
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;padding:32px;">
 
+          <!-- HEADER -->
           <tr>
-            <td style="padding:16px 0;">
-              <div style="height:1px; background:#e5e5e5;"></div>
+            <td>
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <!-- LOGO -->
+                  <td width="72" valign="middle">
+                    <div
+                      style="
+                        background:#f5f5f5;
+                        border-radius:12px;
+                        padding:6px 8px;
+                        display:inline-block;
+                      "
+                    >
+                      <img
+                        src="https://safarjunction.com/logo.png"
+                        alt="SafarJunction"
+                        width="34"
+                        style="
+                          display:block;
+                          border:0;
+                          outline:none;
+                          text-decoration:none;
+                          height:auto;
+                        "
+                      />
+                    </div>
+                  </td>
+
+                  <!-- BRAND TEXT -->
+                  <td valign="middle" style="padding-left:12px;">
+                    <div style="font-size:18px;font-weight:700;color:#222;">
+                      SafarJunction
+                    </div>
+                    <div style="font-size:13px;font-weight:500;color:#777;">
+                      The junction of journey
+                    </div>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
+          <!-- DIVIDER -->
           <tr>
-            <td style="font-size:16px; line-height:1.6; color:#222;">
+            <td style="padding:16px 0;">
+              <div style="height:1px;background:#e5e5e5;"></div>
+            </td>
+          </tr>
+
+          <!-- MESSAGE -->
+          <tr>
+            <td style="font-size:16px;line-height:1.6;color:#222;">
               Hi ${name},
               <br /><br />
               Thank you for reaching out to <strong>SafarJunction</strong>.
@@ -108,9 +149,10 @@ export async function POST(req: Request) {
             </td>
           </tr>
 
+          <!-- REQUEST SUMMARY -->
           <tr>
             <td style="padding:24px 0;">
-              <div style="background:#f5f5f5; border-radius:12px; padding:16px; font-size:14px;">
+              <div style="background:#f5f5f5;border-radius:12px;padding:16px;font-size:14px;">
                 <strong>Your request:</strong><br /><br />
                 Destination: ${destination}<br />
                 Duration: ${journeyDuration}<br />
@@ -119,8 +161,9 @@ export async function POST(req: Request) {
             </td>
           </tr>
 
+          <!-- FOOTER -->
           <tr>
-            <td style="font-size:14px; line-height:1.6; color:#555;">
+            <td style="font-size:14px;line-height:1.6;color:#555;">
               If your travel dates are urgent, feel free to reply directly
               to this email.
               <br /><br />
@@ -131,7 +174,7 @@ export async function POST(req: Request) {
           </tr>
         </table>
 
-        <div style="max-width:520px; text-align:center; font-size:12px; color:#999; margin-top:16px;">
+        <div style="max-width:520px;text-align:center;font-size:12px;color:#999;margin-top:16px;">
           © ${new Date().getFullYear()} SafarJunction
         </div>
       </td>

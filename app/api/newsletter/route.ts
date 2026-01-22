@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   try {
     const { email } = await req.json()
 
-    // Basic validation
     if (!email || !email.includes("@")) {
       return NextResponse.json(
         { success: false, error: "Invalid email" },
@@ -49,12 +48,68 @@ export async function POST(req: Request) {
     <tr>
       <td align="center">
         <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;padding:32px;">
+
+          <!-- HEADER: LEFT LOGO + RIGHT BRAND -->
           <tr>
-            <td style="font-size:24px;font-weight:700;">
-              Welcome to SafarJunction 🌿
+            <td>
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <!-- LOGO BADGE -->
+                  <td width="72" valign="middle">
+                    <div
+                      style="
+                        background:#f5f5f5;
+                        border-radius:12px;
+                        padding:6px 8px;
+                        display:inline-block;
+                      "
+                    >
+                      <img
+                        src="https://safarjunction.com/logo.png"
+                        alt="SafarJunction"
+                        width="34"
+                        style="
+                          display:block;
+                          border:0;
+                          outline:none;
+                          text-decoration:none;
+                          height:auto;
+                        "
+                      />
+                    </div>
+                  </td>
+
+                  <!-- BRAND TEXT -->
+                  <td valign="middle" style="padding-left:12px;">
+                    <div style="font-size:18px;font-weight:700;color:#222;">
+                      SafarJunction
+                    </div>
+                    <div style="font-size:13px;font-weight:500;color:#777;">
+                      The junction of journey
+                    </div>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
+          <!-- DIVIDER -->
+          <tr>
+            <td style="padding:16px 0;">
+              <div style="height:1px;background:#e5e5e5;"></div>
+            </td>
+          </tr>
+
+          <!-- HEADING -->
+          <tr>
+            <td align="center" style="padding-bottom:12px;">
+              <div style="font-size:24px;font-weight:700;color:#222;">
+                Welcome to SafarJunction 🌿
+              </div>
+            </td>
+          </tr>
+
+          <!-- CONTENT -->
           <tr>
             <td style="padding:16px 0;color:#444;font-size:16px;line-height:1.6;">
               Hi there,<br /><br />
@@ -70,6 +125,7 @@ export async function POST(req: Request) {
             </td>
           </tr>
 
+          <!-- FOOTER -->
           <tr>
             <td style="padding-top:24px;color:#555;font-size:14px;">
               Warm regards,<br />
@@ -90,7 +146,6 @@ export async function POST(req: Request) {
       `,
     })
 
-    // Send both in parallel (fast)
     await Promise.all([adminMail, userMail])
 
     return NextResponse.json({ success: true })

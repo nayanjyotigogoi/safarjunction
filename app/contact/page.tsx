@@ -28,29 +28,47 @@ export default function ContactPage() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        destination: '',
-        journeyDuration: '',
-        travelers: '',
-        message: '',
-      })
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000)
-    }, 1000)
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  setLoading(true)
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        honeypot: "",
+      }),
+    })
+
+    const data = await res.json()
+
+    if (!data.success) {
+      throw new Error(data.error || "Submission failed")
+    }
+
+    setSubmitted(true)
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      destination: '',
+      journeyDuration: '',
+      travelers: '',
+      message: '',
+    })
+
+    setTimeout(() => setSubmitted(false), 5000)
+  } catch (err) {
+    alert("Something went wrong. Please try again.")
+  } finally {
+    setLoading(false)
   }
+}
+
 
   const destinations = [
     'Assam',

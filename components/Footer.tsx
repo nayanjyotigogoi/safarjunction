@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter, ArrowRight } from 'lucide-react'
+import { useState } from "react"
+import Image from "next/image"
 
 export default function Footer() {
   const contactMethods = [
@@ -38,6 +40,9 @@ export default function Footer() {
     { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
   ]
+const [newsletterEmail, setNewsletterEmail] = useState("")
+const [loading, setLoading] = useState(false)
+const [success, setSuccess] = useState(false)
 
   return (
     <footer id="contact" className="relative bg-gradient-to-b from-background to-secondary/10 border-t border-border">
@@ -106,17 +111,58 @@ export default function Footer() {
               <p className="text-foreground/70">
                 Subscribe to receive stories, travel tips, and exclusive offers from Northeast India
               </p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-6 py-3 rounded-full bg-background/50 border border-border focus:border-accent focus:outline-none text-foreground placeholder:text-foreground/40 transition-all"
-                />
-                <button className="px-8 py-3 bg-accent hover:bg-accent/90 text-accent-foreground rounded-full font-semibold transition-all duration-300 hover:shadow-xl flex items-center gap-2">
-                  Subscribe
-                  <ArrowRight size={18} />
-                </button>
-              </div>
+<form
+  className="flex gap-2"
+  onSubmit={async (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail }),
+      })
+
+      const data = await res.json()
+
+      if (!data.success) throw new Error()
+
+      setSuccess(true)
+      setNewsletterEmail("")
+      setTimeout(() => setSuccess(false), 4000)
+    } catch {
+      alert("Subscription failed. Try again.")
+    } finally {
+      setLoading(false)
+    }
+  }}
+>
+  <input
+    type="email"
+    required
+    value={newsletterEmail}
+    onChange={(e) => setNewsletterEmail(e.target.value)}
+    placeholder="Enter your email"
+    className="flex-1 px-6 py-3 rounded-full bg-background/50 border border-border focus:border-accent focus:outline-none text-foreground placeholder:text-foreground/40 transition-all"
+  />
+
+  <button
+    type="submit"
+    disabled={loading}
+    className="px-8 py-3 bg-accent hover:bg-accent/90 disabled:bg-accent/60 text-accent-foreground rounded-full font-semibold transition-all duration-300 hover:shadow-xl flex items-center gap-2"
+  >
+    {loading ? "Subscribing..." : "Subscribe"}
+    <ArrowRight size={18} />
+  </button>
+</form>
+
+{success && (
+  <p className="text-sm text-accent mt-2">
+    Thanks for subscribing! 🌿
+  </p>
+)}
+
             </div>
           </motion.div>
         </div>
@@ -126,31 +172,53 @@ export default function Footer() {
       <div className="px-4 sm:px-6 lg:px-8 py-12 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            {/* Brand */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center">
-                  <span className="text-background font-bold text-sm">SJ</span>
-                </div>
-                <h3 className="font-bold text-foreground">Safar Junction</h3>
-              </div>
-              <p className="text-sm text-foreground/60">Your path to discovering the true Northeast India. Begin. Connect. Discover.</p>
-              <div className="flex gap-3 pt-2">
-                {socialLinks.map((social, idx) => {
-                  const Icon = social.icon
-                  return (
-                    <a
-                      key={idx}
-                      href={social.href}
-                      className="w-10 h-10 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent transition-all duration-300 flex items-center justify-center"
-                      aria-label={social.label}
-                    >
-                      <Icon size={18} />
-                    </a>
-                  )
-                })}
-              </div>
-            </div>
+{/* Brand */}
+<div className="space-y-4">
+  <div className="flex items-center gap-3">
+    {/* Logo Badge */}
+    <div className="relative w-14 h-14 rounded-2xl bg-background border border-border shadow-sm ring-1 ring-accent/10 overflow-hidden">
+      <Image
+        src="/logo.png"
+        alt="Safar Junction Logo"
+        fill
+        className="object-contain p-2"
+        priority
+      />
+    </div>
+
+    {/* Brand Name */}
+    <div className="leading-tight">
+      <h3 className="font-bold text-lg text-foreground">
+        Safar junction
+      </h3>
+      <p className="text-xs text-foreground/60">
+        The Junction of Journey
+      </p>
+    </div>
+  </div>
+
+  <p className="text-sm text-foreground/60">
+    Your path to discovering the true Northeast India.
+    Begin. Connect. Discover.
+  </p>
+
+  <div className="flex gap-3 pt-2">
+    {socialLinks.map((social, idx) => {
+      const Icon = social.icon
+      return (
+        <a
+          key={idx}
+          href={social.href}
+          className="w-10 h-10 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent transition-all duration-300 flex items-center justify-center"
+          aria-label={social.label}
+        >
+          <Icon size={18} />
+        </a>
+      )
+    })}
+  </div>
+</div>
+
 
             {/* Quick Links */}
             <div className="space-y-4">

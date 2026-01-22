@@ -41,14 +41,15 @@ export async function POST(req: Request) {
 
     // ---- SMTP Transport (Hostinger) ----
     const transporter = nodemailer.createTransport({
-      host: "smtp.hostinger.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: "connect@safarjunction.com", // ✅ CORRECT DOMAIN
-        pass: process.env.EMAIL_PASSWORD!,
-      },
-    })
+  host: "smtp.hostinger.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "connect@safarjunction.com",
+    pass: process.env.EMAIL_PASSWORD!,
+  },
+})
+
 
     // ---- Admin Email ----
     const adminHtml = `

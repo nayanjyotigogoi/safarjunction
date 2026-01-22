@@ -10,7 +10,7 @@ export default function Header() {
 
   const navItems = [
     { label: 'Destinations', href: '/destinations' },
-    { label: 'Journeys', href: '/journeys' },
+    { label: 'Our Journeys', href: '/journeys' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ]
@@ -27,7 +27,7 @@ export default function Header() {
           {/* Logo Image */}
           <div className="relative w-11 h-11 rounded-full bg-white flex items-center justify-center border border-border shadow-sm">
   <Image
-    src="logo.png"
+    src="/logo.png"
     alt="Safar Junction Logo"
     width={26}
     height={26}

@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const SLIDE_DURATION = 2000 // 6s per image
+const SLIDE_DURATION = 3000 // 6s per image
 
 export default function Hero() {
   const images = [
@@ -13,64 +14,58 @@ export default function Hero() {
     '/images/tawang-kaziranga.jpg',
     '/images/bg-2.jpg',
     '/images/wildlife.jpg',
-
+    '/images/mizoram1.jpg',
   ]
 
   const [current, setCurrent] = useState(0)
-  const [progress, setProgress] = useState(0)
 
   // Auto slide
   useEffect(() => {
-    const slideTimer = setInterval(() => {
+    const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length)
-      setProgress(0)
     }, SLIDE_DURATION)
 
-    return () => clearInterval(slideTimer)
+    return () => clearInterval(timer)
   }, [images.length])
 
-  // // Progress bar animation
-  // useEffect(() => {
-  //   const progressTimer = setInterval(() => {
-  //     setProgress((p) => (p >= 100 ? 100 : p + 1))
-  //   }, SLIDE_DURATION / 100)
-
-  //   return () => clearInterval(progressTimer)
-  // }, [])
+  // Preload all images (prevents future flicker)
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-
-      {/* 🌄 BACKGROUND SLIDER */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* 🌄 BACKGROUND IMAGE FADE SLIDER */}
+      <div className="absolute inset-0 z-0">
         {images.map((img, index) => (
           <motion.div
             key={img}
             className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${img})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-            initial={false}
-            animate={{
-              x: index === current ? '0%' : index < current ? '-100%' : '100%',
-            }}
-            transition={{
-              duration: 1.4,
-              ease: 'easeInOut',
-            }}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: index === current ? 1 : 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
+          >
+            <Image
+              src={img}
+              alt="Safar Junction destination"
+              fill
+              priority={index === 0} // preload first image
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
         ))}
       </div>
 
-      {/* OVERLAY */}
+      {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
 
       {/* CONTENT */}
       <div className="relative z-10 min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-
           <span className="inline-block px-4 py-2 rounded-full bg-white/20 text-sm font-semibold border border-white/30 backdrop-blur">
             Begin. Connect. Discover.
           </span>
@@ -107,30 +102,18 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 🔘 DOTS */}
+      {/* DOTS */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {images.map((_, i) => (
           <button
             key={i}
-            onClick={() => {
-              setCurrent(i)
-              setProgress(0)
-            }}
+            onClick={() => setCurrent(i)}
             className={`w-3 h-3 rounded-full transition-all ${
               i === current ? 'bg-white scale-125' : 'bg-white/40'
             }`}
           />
         ))}
       </div>
-
-      {/* 📊 PROGRESS BAR */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20 z-20">
-        <div
-          className="h-full bg-accent transition-all"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
     </section>
   )
 }

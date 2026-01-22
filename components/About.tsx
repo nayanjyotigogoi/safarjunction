@@ -36,12 +36,18 @@ export default function About() {
   const galleryImages = [
     '/images/wildlife.jpg',
     '/images/tawang-kaziranga.jpg',
-     '/images/manipur.jpg',
+    '/images/manipur.jpg',
+    '/images/mizoram1.jpg',
     '/images/meghalaya.jpg',
+    '/images/manipur1.jpg',
     '/images/assam.jpg',
+    '/images/majuli.jpg',
+    '/images/people.jpg',
     '/images/northeast.jpg',
+    '/images/mizoram2.jpg',
     '/images/kaziranga.jpg',
     '/images/arunachal1.jpg',
+    '/images/tripura1.jpg',
    
 
   ]
@@ -127,7 +133,7 @@ export default function About() {
           {[
             { number: '7', label: 'Sister States' },
             { number: '8', label: 'Signature Journeys' },
-            { number: '4,500+', label: 'Travelers Transformed' },
+            { number: '50+', label: 'Travelers Transformed' },
             { number: '100%', label: 'Experience-Driven' },
           ].map((stat, idx) => (
             <div key={idx} className="text-center">

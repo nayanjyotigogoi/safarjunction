@@ -1,5 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Image from "next/image"
+
 import { Heart, Globe, Users, Lightbulb } from 'lucide-react'
 
 export default function AboutPage() {
@@ -29,7 +31,7 @@ export default function AboutPage() {
   const stats = [
     { number: '7', label: 'States Explored', description: 'All of Northeast India' },
     { number: '8', label: 'Curated Journeys', description: 'Carefully designed experiences' },
-    { number: '4,500+', label: 'Happy Travelers', description: 'From 35+ countries' },
+    { number: '50+', label: 'Happy Travelers', description: 'From 35+ countries' },
     { number: '100%', label: 'Experience-Driven', description: 'No generic tours' },
   ]
 
@@ -46,27 +48,109 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
+        {/* Our Identity */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/5">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Images */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-56 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/wildlife.jpg"
+                  alt="Safar Junction team planning journeys"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-56 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/people.jpg"
+                  alt="On-ground exploration in Northeast India"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-56 col-span-2 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/nagaland1.jpg"
+                  alt="Safar Junction working with local communities"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold">
+                More Than a Travel Brand
+              </h2>
+
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                <strong>Safar Junction</strong> is the public-facing travel brand of
+                <strong> The Junction of the Journey</strong>—a registered travel
+                enterprise built on deep regional knowledge, cultural respect,
+                and a passion for meaningful exploration.
+              </p>
+
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                While our legal name reflects the philosophy behind our work,
+                <strong> Safar Junction</strong> is how travelers know us—simple,
+                memorable, and rooted in the idea that every journey begins at a
+                junction of stories, people, and places.
+              </p>
+
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                What you see here are not staged moments. These are real people,
+                real planning, real journeys—crafted by a team that lives and
+                breathes Northeast India.
+              </p>
+            </div>
+          </div>
+        </section>
+
 
         {/* Our Journey */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto space-y-8">
             <h2 className="text-4xl font-bold text-center mb-12">Our Journey</h2>
+
             <div className="space-y-8 text-lg text-foreground/80 leading-relaxed">
               <p>
-                Safar Junction was founded with a singular vision: to reimagine Northeast India tourism. For too long, this magical region was treated as a destination to "tick off," with travelers rushing through multiple states without truly understanding them. We saw an opportunity to change that.
+                Safar Junction began as a simple idea—born from countless journeys
+                across Northeast India and a growing realization that this region
+                deserved to be experienced more slowly, more deeply, and more
+                respectfully.
               </p>
+
               <p>
-                Our founder, a native of the Northeast, realized that the region's true magic lies not in grand monuments or commercial attractions, but in the intimate experiences—the conversations with tribal elders, the misty mornings in sacred groves, the warmth of a family meal in a village home, the spiritual awakening in a monastery.
+                As travelers ourselves and natives of the Northeast, we noticed a
+                common gap. Most travel plans focused on covering multiple states
+                quickly, often missing the stories, cultures, and everyday life that
+                truly define this land. We wanted to change that—starting small, but
+                with clear intent.
               </p>
+
               <p>
-                Safar Junction doesn't offer tours; we offer transformations. We meticulously craft each journey to reveal the soul of Northeast India—its people, cultures, spirituality, and untamed nature. We believe that when travelers truly understand a place, they become its ambassadors.
+                In our early days, Safar Junction has carefully curated a handful of
+                meaningful journeys across <strong>3–4 Northeast states</strong>,
+                hosting small groups and individual travelers who value authenticity
+                over checklists. So far, we’ve had the privilege of guiding
+                <strong> 50+ travelers</strong> on thoughtfully planned experiences,
+                each shaped by local insights and personal connections.
               </p>
+
               <p>
-                Today, Safar Junction has welcomed over 4,500 travelers from more than 35 countries. Each journey leaves a lasting impact on travelers while supporting local communities and preserving cultural heritage. We're not just building a travel brand; we're creating a movement to appreciate and protect Northeast India.
+                We’re still at the beginning of our journey—and we see that as our
+                strength. It allows us to stay hands-on, listen closely, and design
+                every experience with care. Safar Junction isn’t about scale yet; it’s
+                about building trust, learning continuously, and growing responsibly
+                alongside the communities we work with.
               </p>
             </div>
           </div>
         </section>
+
 
         {/* Our Values */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/10">

@@ -2,11 +2,29 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Calendar, Zap, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import {
+  Calendar,
+  Zap,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import { journeys } from '../data/journeys'
 import useEmblaCarousel from 'embla-carousel-react'
 import { motion } from 'framer-motion'
 import { useCallback } from 'react'
+
+// ✅ Price formatter (Indian commas)
+function formatPrice(price: number | string) {
+  const numericPrice =
+    typeof price === 'string'
+      ? Number(price.replace(/[^\d]/g, ''))
+      : price
+
+  if (isNaN(numericPrice)) return price
+
+  return `₹ ${new Intl.NumberFormat('en-IN').format(numericPrice)}`
+}
 
 export default function JourneyCards() {
   const journeyList = Object.values(journeys)
@@ -74,10 +92,7 @@ export default function JourneyCards() {
                 whileHover={{ y: -6 }}
                 className="min-w-[280px] sm:min-w-[340px] lg:min-w-[380px]"
               >
-                <Link
-                  href={`/journeys/${journey.id}`}
-                  className="block h-full"
-                >
+                <Link href={`/journeys/${journey.id}`} className="block h-full">
                   <div className="group h-full rounded-2xl overflow-hidden border bg-background hover:shadow-2xl transition cursor-pointer">
 
                     {/* Image */}
@@ -123,16 +138,17 @@ export default function JourneyCards() {
 
                       {/* Price + CTA */}
                       <div className="flex items-center justify-between pt-4 border-t">
-                        <div>
+                        {/* ✅ Fixed-height price block */}
+                        <div className="min-h-[44px]">
                           <p className="text-xs text-foreground/60">
                             Starting from
                           </p>
-                          <p className="text-lg font-bold text-foreground">
-                            {journey.price}
+                          <p className="text-lg font-bold text-foreground leading-tight">
+                            {formatPrice(journey.price)}
                           </p>
                         </div>
 
-                        {/* Book Now button */}
+                        {/* Book Now */}
                         <button
                           onClick={(e) => {
                             e.preventDefault()
@@ -151,7 +167,6 @@ export default function JourneyCards() {
                 </Link>
               </motion.div>
             ))}
-
           </div>
         </div>
 

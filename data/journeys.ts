@@ -69,7 +69,7 @@ export const journeys: Record<string, Journeys> = {
   id: '1',
   title: 'Classic Meghalaya Escape',
   duration: '05N / 06D',
-  price: 19550, // base teaser price (2 pax, Std CPAI)
+  price: 10050, // base teaser price (2 pax, Std CPAI)
   popularity: 1200,
   bestSeller: true,
   region: 'Guwahati · Shillong · Cherrapunjee',
@@ -198,7 +198,7 @@ export const journeys: Record<string, Journeys> = {
   id: '2',
   title: 'Meghalaya & Kaziranga Signature Luxury Journey',
   duration: '07N / 08D',
-  price: 28250, // base teaser: 2 pax, Standard CPAI
+  price: 16100, // base teaser: 2 pax, Standard CPAI
   popularity: 890,
   bestSeller: true,
   region: 'Guwahati · Shillong · Cherrapunjee · Kaziranga',
@@ -341,7 +341,7 @@ export const journeys: Record<string, Journeys> = {
   id: '3',
   title: 'Assam Wildlife & Meghalaya Hill Retreat',
   duration: '05N / 06D',
-  price: 20750, // base teaser: 2 pax, Standard CPAI
+  price: 11250, // base teaser: 2 pax, Standard CPAI
   popularity: 756,
   region: 'Guwahati · Kaziranga National Park · Shillong',
   difficulty: 'Moderate',
@@ -472,7 +472,7 @@ export const journeys: Record<string, Journeys> = {
   id: '4',
   title: 'The Grand Northeast Explorer',
   duration: '12N / 13D',
-  price: 51850, // base teaser: 2 pax, Standard CPAI
+  price: 21075, // base teaser: 2 pax, Standard CPAI
   popularity: 420,
   bestSeller: true,
   region:
@@ -658,7 +658,7 @@ export const journeys: Record<string, Journeys> = {
   id: '5',
   title: 'Assam Heritage, Wildlife & River Island Sojourn',
   duration: '09N / 10D',
-  price: 44150, // base teaser: 2 pax, Standard CPAI
+  price: 17250, // base teaser: 2 pax, Standard CPAI
   popularity: 680,
   region:
     'Guwahati · Manas National Park · Kaziranga National Park · Sibsagar · Majuli',
@@ -820,7 +820,7 @@ export const journeys: Record<string, Journeys> = {
   id: '6',
   title: 'Assam Wilderness Trilogy: Manas • Nameri • Kaziranga',
   duration: '07N / 08D',
-  price: 31225, // base teaser: 2 pax, Deluxe CPAI
+  price: 13725, // base teaser: 2 pax, Deluxe CPAI
   popularity: 510,
   region:
     'Guwahati · Manas National Park · Nameri National Park · Kaziranga National Park',
@@ -967,7 +967,7 @@ export const journeys: Record<string, Journeys> = {
   id: '7',
   title: 'Arunachal Himalayan Highlands – Tawang Signature Journey',
   duration: '06N / 07D',
-  price: 27450, // base teaser: 2 pax, Standard CPAI
+  price: 12075, // base teaser: 2 pax, Standard CPAI
   popularity: 340,
   region:
     'Bhalukpung · Bomdila · Tawang · Dirang',
@@ -1107,7 +1107,7 @@ export const journeys: Record<string, Journeys> = {
   id: '8',
   title: 'Kaziranga to Tawang – The Ultimate Assam & Himalayan Passage',
   duration: '08N / 09D',
-  price: 44150, // base teaser: 2 pax, Standard CPAI
+  price: 17250, // base teaser: 2 pax, Standard CPAI
   popularity: 260,
   region:
     'Guwahati · Kaziranga · Dirang · Tawang · Bomdila',

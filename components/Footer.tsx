@@ -26,6 +26,7 @@ export default function Footer() {
       value: '+91 70990 50077',
       href: 'tel:+917099050077',
     },
+    
     {
       icon: Mail,
       label: 'Email',

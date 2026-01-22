@@ -241,14 +241,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/60">
-          <p>© 2024 Safar Junction. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="/terms" className="hover:text-accent">Terms</a>
-            <a href="/privacy-policy" className="hover:text-accent">Privacy</a>
-            <a href="/disclaimer" className="hover:text-accent">Disclaimer</a>
-          </div>
-        </div>
+<div className="mt-10 border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/60">
+  <p>
+    © 2024 Safar Junction. All rights reserved.{" "}
+    <span className="hidden sm:inline">|</span>{" "}
+    <span className="block sm:inline">
+      Designed & Developed by{" "}
+      <a
+        href="https://www.anvayasolution.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-accent transition"
+      >
+        Anvaya Solution
+      </a>
+    </span>
+  </p>
+
+  <div className="flex gap-4">
+    <a href="/terms" className="hover:text-accent">Terms</a>
+    <a href="/privacy-policy" className="hover:text-accent">Privacy</a>
+    <a href="/disclaimer" className="hover:text-accent">Disclaimer</a>
+  </div>
+</div>
+
       </div>
     </footer>
   )

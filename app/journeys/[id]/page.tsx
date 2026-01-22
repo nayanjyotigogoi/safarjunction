@@ -312,7 +312,7 @@ export default function JourneyDetailPage() {
                 </Link>
 
                 <a
-                  href="https://wa.me/91XXXXXXXXXX"
+                  href="https://wa.me/9101810169"
                   target="_blank"
                   className="block text-center px-6 py-4 rounded-full border font-semibold hover:bg-secondary transition"
                 >

@@ -2,7 +2,6 @@
 
 import { useParams } from 'next/navigation'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -42,7 +41,7 @@ export default function JourneyDetailPage() {
             Back to Journeys
           </Link>
         </div>
-        <Footer />
+ 
       </div>
     )
   }
@@ -332,7 +331,6 @@ export default function JourneyDetailPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   )
 }

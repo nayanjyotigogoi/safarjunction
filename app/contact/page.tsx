@@ -4,7 +4,7 @@ import React from "react"
 
 import { useState } from 'react'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 
 export default function ContactPage() {
@@ -383,7 +383,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
         </section>
       </main>
-      <Footer />
+ 
     </div>
   )
 }

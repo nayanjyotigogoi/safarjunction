@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -100,7 +100,7 @@ export default function DestinationsPage() {
 
       </main>
 
-      <Footer />
+
     </div>
   )
 }

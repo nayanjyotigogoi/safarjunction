@@ -3,7 +3,7 @@ import Hero from '@/components/Hero'
 import InteractiveMap from '@/components/InteractiveMap'
 import JourneyCards from '@/components/JourneyCards'
 import About from '@/components/About'
-import Footer from '@/components/Footer'
+
 
 export default function Home() {
   return (
@@ -15,7 +15,6 @@ export default function Home() {
         <InteractiveMap />
         <About />
       </main>
-      <Footer />
     </div>
   )
 }

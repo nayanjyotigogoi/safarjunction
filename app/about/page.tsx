@@ -1,5 +1,5 @@
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+
 import Image from "next/image"
 
 import { Heart, Globe, Users, Lightbulb } from 'lucide-react'
@@ -284,7 +284,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <Footer />
+
     </div>
   )
 }

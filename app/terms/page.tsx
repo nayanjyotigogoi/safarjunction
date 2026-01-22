@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+
 
 export default function TermsPage() {
   return (
@@ -131,7 +131,7 @@ export default function TermsPage() {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   )
 }

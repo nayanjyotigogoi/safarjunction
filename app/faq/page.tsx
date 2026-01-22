@@ -1,7 +1,6 @@
 'use client'
 
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default function FAQPage() {
   return (
@@ -123,7 +122,6 @@ export default function FAQPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   )
 }

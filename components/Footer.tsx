@@ -26,10 +26,10 @@ export default function Footer() {
   ]
 
   const quickLinks = [
-    { label: 'Destinations', href: '#destinations' },
-    { label: 'Journeys', href: '#journeys' },
-    { label: 'About Us', href: '#about' },
-    { label: 'FAQs', href: '#' },
+    { label: 'Destinations', href: '/destinations' },
+    { label: 'Journeys', href: '/journeys' },
+    { label: 'About Us', href: '/about' },
+    { label: 'FAQs', href: '/faq' },
   ]
 
   const socialLinks = [
@@ -193,19 +193,32 @@ export default function Footer() {
 
           {/* Bottom Bar */}
           <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-foreground/60 text-center md:text-left">
-              © 2024 Safar Junction. All rights reserved. Crafted for explorers, by explorers.
-            </p>
+<p className="text-sm text-foreground/60 text-center md:text-left">
+  © 2024 Safar Junction. All rights reserved. Crafted for explorers, by explorers.
+  <span className="block md:inline md:ml-2">
+    by{' '}
+    <a
+      href="https://www.anvayasolution.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-accent transition-colors underline-offset-4 hover:underline"
+    >
+      Anvaya Solution
+    </a>
+  </span>
+</p>
+
             <div className="flex gap-6 text-sm text-foreground/60">
-              <a href="#" className="hover:text-accent transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Accessibility
-              </a>
+              <a href="/terms" className="hover:text-accent transition-colors">
+  Terms & Conditions
+</a>
+<a href="/privacy-policy" className="hover:text-accent transition-colors">
+  Privacy Policy
+</a>
+<a href="/disclaimer" className="hover:text-accent transition-colors">
+  Disclaimer
+</a>
+
             </div>
           </div>
         </div>

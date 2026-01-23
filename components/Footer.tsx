@@ -49,10 +49,8 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/thesafarjunction/', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/people/Thesafarjunction/61587221780214/', label: 'Facebook' },
   ]
 
   return (
